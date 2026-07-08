@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sana Amin — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF9F5;
+    --surface:#FFFFFF;
+    --ink:#1C1B18;
+    --muted:#6E6C64;
+    --hairline:#E5E2D9;
+    --sage:#3F5A44;
+    --sage-soft:#E9EFE9;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:linear-gradient(135deg, #fcfaf6 0%, #f4efe7 100%);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:780px;margin:0 auto;padding:20px 20px 40px;}
+
+  header.hero,
+  section,
+  footer{
+    background:rgba(255,255,255,0.86);
+    border:1px solid var(--hairline);
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(28,27,24,0.05);
+    backdrop-filter:blur(8px);
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:72px 28px 44px;
+    margin-top:8px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--sage);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--sage);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.35;}
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(40px,6vw,58px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    margin-bottom:10px;
+  }
+  .role{
+    font-size:16px;
+    color:var(--muted);
+    margin-bottom:28px;
+  }
+  .role span{color:var(--ink);}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+    border:1px solid var(--hairline);
+    border-radius:100px;
+    padding:5px 12px;
+    background:var(--surface);
+  }
+  .contact{
+    display:flex;flex-wrap:wrap;gap:20px;
+    font-size:14px;
+  }
+  .contact a{
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--hairline);
+    padding-bottom:2px;
+    transition:border-color 0.2s, color 0.2s;
+  }
+  .contact a:hover{border-color:var(--sage); color:var(--sage);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:34px 28px;margin-top:18px;}
+  section:last-of-type{border-bottom:none;}
+  .section-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:22px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about p{
+    font-size:17px;
+    color:#3A3934;
+    max-width:640px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project{
+    padding:22px 0;
+    border-top:1px solid var(--hairline);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .project:hover{transform:translateY(-2px);}
+  .project:first-of-type{border-top:none;padding-top:0;}
+  .project-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .project-title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:22px;
+  }
+  .project-kind{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .project-desc{
+    color:#3A3934;
+    font-size:15px;
+    max-width:600px;
+    margin:10px 0 14px;
+  }
+  .project-note{
+    font-size:13.5px;
+    color:var(--sage);
+    background:var(--sage-soft);
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:4px;
+    margin-bottom:14px;
+  }
+
+  /* stage tracker — signature element */
+  .stage-tracker{
+    display:flex;
+    align-items:center;
+    gap:0;
+    margin:14px 0;
+  }
+  .stage{
+    display:flex;
+    align-items:center;
+    flex:1;
+  }
+  .stage-dot{
+    width:9px;height:9px;border-radius:50%;
+    border:1.5px solid var(--hairline);
+    background:var(--surface);
+    flex-shrink:0;
+    transition:background 0.2s;
+  }
+  .stage-dot.filled{background:var(--sage); border-color:var(--sage);}
+  .stage-line{
+    height:1.5px;
+    flex:1;
+    background:var(--hairline);
+  }
+  .stage-line.filled{background:var(--sage);}
+  .stage-labels{
+    display:flex;
+    justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--muted);
+    margin-top:6px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  .stage-labels span.current{color:var(--sage); font-weight:500;}
+
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .stack span{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--muted);
+    border:1px solid var(--hairline);
+    padding:3px 9px;
+    border-radius:100px;
+  }
+  .project-link{
+    display:inline-block;
+    margin-top:14px;
+    font-size:13.5px;
+    color:var(--sage);
+    text-decoration:none;
+    border-bottom:1px solid var(--sage);
+    padding-bottom:1px;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+  }
+  .skill-cat h4{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--sage);
+    margin-bottom:10px;
+  }
+  .skill-cat p{
+    font-size:14.5px;
+    color:#3A3934;
+    line-height:1.7;
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-title{
+    font-family:'Fraunces',serif;
+    font-size:20px;
+    font-weight:500;
+    margin-bottom:4px;
+  }
+  .edu-sub{font-size:14.5px; color:var(--muted);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:24px 28px 28px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:18px;
+  }
+  footer p{font-size:13.5px; color:var(--muted);}
+  footer .status{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--sage);
+    display:flex;align-items:center;gap:7px;
+  }
+
+  @media (max-width:600px){
+    header.hero{padding:64px 0 40px;}
+    .skills-grid{grid-template-columns:1fr;}
+    .project-head{flex-direction:column;align-items:flex-start;gap:4px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow"><span class="dot"></span>Available for internship · July 2026</div>
+    <h1>Sana Amin</h1>
+    <p class="role">Software Engineering student at <span>NUST SEECS</span> — full-stack builder with a bias toward shipping and an eye for real-world problems.</p>
+    <div class="tags">
+      <span class="tag">React / Vite</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Supabase / PostgreSQL</span>
+      <span class="tag">LLM Integration</span>
+      <span class="tag">MongoDB</span>
+    </div>
+    <div class="contact">
+      <a href="mailto:samin.bese23seecs@seecs.edu.pk">samin.bese23seecs@seecs.edu.pk</a>
+      <a href="https://github.com/SanaAmin324" target="_blank">github.com/SanaAmin324</a>
+      <a href="https://www.linkedin.com/in/sana-amin-62267631a" target="_blank">linkedin.com/in/sana-amin</a>
+      <a href="#">Rawalpindi / Islamabad</a>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="section-label">About</div>
+    <p>I'm a software engineering student who likes building things that get used, not just demoed. I've shipped a live client web app, built a student community platform as coursework, and I'm currently working on an AI security tool and designing a services marketplace for my FYP. I move across the stack — UI, backend, and increasingly AI integration — and I'm drawn to startup environments where you own what you build.</p>
+  </section>
+
+  <section class="projects">
+    <div class="section-label">Projects</div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-title">Super Ideal Bakers — Ordering Web App</span>
+        <span class="project-kind">Client project</span>
+      </div>
+      <div class="project-note">Live · frontend on Vercel, backend on Render</div>
+      <p class="project-desc">A mobile-first ordering app built for a local bakery in Rawalpindi — animated cart, pickup/delivery toggle, and WhatsApp checkout with no payment gateway needed. A few finishing touches left to polish.</p>
+      <p class="project-desc" style="margin-top:-6px;"><strong>Next step:</strong> turning this into a reusable template so other small bakeries without a web presence can get online quickly and affordably.</p>
+      <div class="stage-tracker">
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div></div>
+      </div>
+      <div class="stage-labels"><span>Idea</span><span>Design</span><span>Build</span><span class="current">Live</span></div>
+      <div class="stack"><span>React</span><span>Vite</span><span>Node.js</span><span>Vercel</span><span>Render</span><span>WhatsApp API</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-title">SEECSKonnect</span>
+        <span class="project-kind">Course project · MERN</span>
+      </div>
+      <p class="project-desc">A community platform built for NUST SEECS students to connect, share resources, and collaborate — built as the semester project for our Web Development course. Tackles a real gap: students in the same department with no structured way to find and help each other.</p>
+      <div class="stage-tracker">
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div></div>
+      </div>
+      <div class="stage-labels"><span>Idea</span><span>Design</span><span>Build</span><span class="current">Shipped</span></div>
+      <div class="stack"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+      <a class="project-link" href="https://github.com/SanaAmin324" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-title">NVAS — Network Vulnerability Assessment</span>
+        <span class="project-kind">Internship · Cyber Zone</span>
+      </div>
+      <p class="project-desc">An AI-assisted vulnerability scanner I'm currently building during my Cyber Zone internship — OpenVAS and Nmap for scanning, BERT for classification, and CVE/CVSS/EPSS scoring to prioritize real risk. React dashboard, FastAPI backend.</p>
+      <div class="stage-tracker">
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line"></div></div>
+        <div class="stage"><div class="stage-dot"></div></div>
+      </div>
+      <div class="stage-labels"><span>Idea</span><span>Design</span><span class="current">Building</span><span>Live</span></div>
+      <div class="stack"><span>React</span><span>FastAPI</span><span>Python</span><span>BERT</span><span>OpenVAS</span><span>PostgreSQL</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <span class="project-title">Bulao — Local Service Discovery</span>
+        <span class="project-kind">Final year project</span>
+      </div>
+      <p class="project-desc">A platform connecting customers with trusted local service providers — electricians, plumbers, tutors — across Pakistan. Deep UX research done for low-literacy users, including a voice-based registration flow using speech-to-text and LLM field extraction, so providers can register just by speaking.</p>
+      <div class="stage-tracker">
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line filled"></div></div>
+        <div class="stage"><div class="stage-dot filled"></div><div class="stage-line"></div></div>
+        <div class="stage"><div class="stage-dot"></div><div class="stage-line"></div></div>
+        <div class="stage"><div class="stage-dot"></div></div>
+      </div>
+      <div class="stage-labels"><span>Idea</span><span class="current">Design</span><span>Build</span><span>Live</span></div>
+      <div class="stack"><span>React Native</span><span>Supabase</span><span>Claude API</span><span>Web Speech API</span><span>Figma</span></div>
+    </div>
+
+  </section>
+
+  <section class="skills">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <h4>Frontend</h4>
+        <p>React, Vite, HTML/CSS, Figma, Lovable</p>
+      </div>
+      <div class="skill-cat">
+        <h4>Backend &amp; Data</h4>
+        <p>Node.js, Python, JavaScript, Express, FastAPI, Supabase, PostgreSQL, MongoDB</p>
+      </div>
+      <div class="skill-cat">
+        <h4>Tools</h4>
+        <p>Git / GitHub, Postman, Vercel, Render, GCP, Canva</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="education">
+    <div class="section-label">Education</div>
+    <div class="edu-title">BE Software Engineering</div>
+    <div class="edu-sub">NUST SEECS — National University of Sciences &amp; Technology · Batch bese23seecs · Expected 2027</div>
+  </section>
+
+  <footer>
+    <p>Sana Amin · NUST SEECS</p>
+    <div class="status"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--sage);"></span>Open to remote internships</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
